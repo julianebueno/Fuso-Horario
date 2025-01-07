@@ -8,12 +8,29 @@
   <title>Fuso Horário</title>
 </head>
 <body>
-  <h1>Fuso horario</h1>
-  <form>
-    <label for="fuso">Selecione o fuso horário:</label>
-    <select name="fuso" id="fuso"></select>
-  </form>
-  <div id="relogio"></div>
+  <header>
+    <h1>Fuso horario</h1>
+  </header>
+  <main>
+    <div class="utcContainer">
+      <div id="utcHorarios">
+        <p class="utcHorariosSubTitulos"> Horário GMT:</p>
+        <p id="utcHorariosGMT"></p>
+        <p class="utcHorariosSubTitulos"> Horário Local:</p>
+        <p id="utcHorariosLocal"></p>
+        <p class="utcHorariosSubTitulos" id="utcHorariosUTC"></p>
+        <p id="utcHorariosLocalUTC"></p>
+      </div>
+      <div id="utcBotoes"></div>
+    </div>
+    <div class="fusoContainer">
+      <form>
+        <label for="fuso">Selecione o fuso horário:</label>
+        <select name="fuso" id="fuso"></select>
+      </form>
+      <div id="relogio"></div>
+    </div>
+  </main>
   <script src="./src/script.js"></script>
 </body>
 </html>
