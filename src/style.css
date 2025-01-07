@@ -10,7 +10,65 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  flex: 1; /* Depende do display flex do body */
+  width: 100%;
+}
+
+
+
+/* Classes */
+
+.utcContainer {
+  background-color: #f4f4f4;
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 10px;
+  /* border: solid 1px yellowgreen; */
+}
+
+.utcHorariosSubTitulos {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.utcBtns {
+  padding: 10px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  width: 45%;
+}
+
 /* IDs */
+
+#utcHorarios p:nth-child(even) {
+  margin-bottom: 15px;
+  border-bottom: solid 1px #999;
+}
+
+#utcBotoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 #relogio {
   border: solid 1px red;
 }

@@ -1,6 +1,4 @@
-const fuso = document.getElementById("fuso");
-const relogio = document.getElementById("relogio");
-
+// vetor com varios timezones +- 350 linhas
 var aryIanaTimeZones = [
   "Europe/Andorra",
   "Asia/Dubai",
@@ -352,18 +350,62 @@ var aryIanaTimeZones = [
   "Africa/Johannesburg",
 ];
 
+let date = new Date();
+
+// ================================================================== utc-container
+
+const utcBotoes = document.getElementById("utcBotoes");
+for (let i = 1; i <= 12; i++) {
+  utcBotoes.innerHTML += `<button id="btn+${i}" class="utcBtns"> UTC+${i}</button>`;
+  utcBotoes.innerHTML += `<button id="btn-${i}" class="utcBtns"> UTC-${i}</button>`;
+}
+
+let timeZoneUtc = `-0`;
+let utcBtns = document.querySelectorAll(".utcBtns");
+
+utcBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    let num = btn.id.slice(3);
+    timeZoneUtc = `${num.startsWith("+") ? "-" : "+"}${num.slice(1)}`;
+  });
+});
+
+const utcHorariosGMT = document.getElementById("utcHorariosGMT");
+const utcHorariosLocal = document.getElementById("utcHorariosLocal");
+const utcHorariosUTC = document.getElementById("utcHorariosUTC");
+const utcHorariosLocalUTC = document.getElementById("utcHorariosLocalUTC");
+
+setInterval(() => {
+  date = new Date();
+  utcHorariosGMT.innerHTML = ` <p>${date.toUTCString().slice(4, 25)}</p> `;
+  utcHorariosLocal.innerHTML = ` <p>${date.toLocaleString()}</p> `;
+  utcHorariosUTC.innerHTML = ` 
+    <p> Horário UTC ${ timeZoneUtc.startsWith("+")?"-":"+" }${ timeZoneUtc.slice(1) }:</p> 
+  `;
+  utcHorariosLocalUTC.innerHTML = ` 
+    <p>${date.toLocaleString("pt-br", { timeZone: `Etc/GMT${timeZoneUtc}`, })}</p> 
+  `;
+}, 500);
+
+// ================================================================== fuso-container
+
+const fuso = document.getElementById("fuso");
+const relogio = document.getElementById("relogio");
+
+let timeZone = aryIanaTimeZones[0];
+let strTime = date.toLocaleString("pt-br", { timeZone: `${timeZone}` });
+
 aryIanaTimeZones.forEach((timeZone) => {
   fuso.innerHTML += `<option value="${timeZone}">${timeZone}</option>`;
 });
 
-let timeZone = aryIanaTimeZones[0];
 fuso.addEventListener("change", () => {
   timeZone = fuso.value;
 });
 
 setInterval(() => {
-  let date = new Date();
-  let strTime = date.toLocaleString("pt-br", { timeZone: `${timeZone}` });
+  date = new Date();
+  strTime = date.toLocaleString("pt-br", { timeZone: `${timeZone}` });
   relogio.innerHTML = `
     <p>Horário Local: ${date.toLocaleString()}</p>
     <p>Horário no Fuso: ${strTime}</p>
