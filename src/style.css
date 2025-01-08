@@ -32,14 +32,6 @@ main {
 
 /* Classes */
 
-.btnEliel {
-  background-color: fuchsia;
-}
-
-.btnJuliane {
-  background-color: orange;
-}
-
 .utcContainer {
   display: "flex";
   flex-direction: column;
@@ -72,6 +64,14 @@ main {
 }
 
 /* IDs */
+
+#btnEliel {
+  background-color: fuchsia;
+}
+
+#btnJuliane {
+  background-color: orange;
+}
 
 #utcHorarios p:nth-child(even) {
   margin-bottom: 15px;
