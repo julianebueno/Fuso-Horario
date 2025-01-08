@@ -378,7 +378,7 @@ const utcHorariosLocalUTC = document.getElementById("utcHorariosLocalUTC");
 setInterval(() => {
   date = new Date();
   utcHorariosGMT.innerHTML = ` <p>${date.toUTCString().slice(4, 25)}</p> `;
-  utcHorariosLocal.innerHTML = ` <p>${date.toLocaleString()}</p> `;
+  utcHorariosLocal.innerHTML = ` <p>${date.toLocaleString("pt-br")}</p> `;
   utcHorariosUTC.innerHTML = ` 
     <p> Horário UTC ${ timeZoneUtc.startsWith("+")?"-":"+" }${ timeZoneUtc.slice(1) }:</p> 
   `;
