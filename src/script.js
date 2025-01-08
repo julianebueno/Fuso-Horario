@@ -350,6 +350,21 @@ var aryIanaTimeZones = [
   "Africa/Johannesburg",
 ];
 
+const btnEliel = document.getElementById("btnEliel");
+const btnJuliane = document.getElementById("btnJuliane");
+const utcContainer = document.queryselector("utcContainer");
+const fusoContainer = document.getElementById("fusoContainer");
+
+btnEliel.addEventListener("click", () => {
+  utcContainer.style.display = "flex";
+  fusoContainer.style.display = "none";
+});
+
+btnJuliane.addEventListener("click", () => {
+  utcContainer.style.display = "none";
+  fusoContainer.style.display = "flex";
+});
+
 let date = new Date();
 
 // ================================================================== utc-container
