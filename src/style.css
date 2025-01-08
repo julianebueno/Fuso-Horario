@@ -32,7 +32,17 @@ main {
 
 /* Classes */
 
+.btnEliel {
+  background-color: fuchsia;
+}
+
+.btnJuliane {
+  background-color: orange;
+}
+
 .utcContainer {
+  display: "flex";
+  flex-direction: column;
   background-color: #f4f4f4;
   width: 30%;
   min-width: 200px;
@@ -53,6 +63,12 @@ main {
   color: white;
   cursor: pointer;
   width: 45%;
+}
+
+.fusoContainer {
+  display: "flex";
+  flex-direction: column;
+  background-color: #fafafa;
 }
 
 /* IDs */
