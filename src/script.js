@@ -350,21 +350,6 @@ var aryIanaTimeZones = [
   "Africa/Johannesburg",
 ];
 
-const btnEliel = document.getElementById("btnEliel");
-const btnJuliane = document.getElementById("btnJuliane");
-const utcContainer = document.queryselector(".utcContainer");
-const fusoContainer = document.queryselector(".fusoContainer");
-
-btnEliel.addEventListener("click", () => {
-  utcContainer.style.display = "flex";
-  fusoContainer.style.display = "none";
-});
-
-btnJuliane.addEventListener("click", () => {
-  utcContainer.style.display = "none";
-  fusoContainer.style.display = "flex";
-});
-
 let date = new Date();
 
 // ================================================================== utc-container
@@ -427,3 +412,19 @@ setInterval(() => {
   `;
 }, 500);
 
+// ================================================================== containers listeners
+
+const btnEliel = document.getElementById("btnEliel");
+const btnJuliane = document.getElementById("btnJuliane");
+const utcContainer = document.querySelector(".utcContainer");
+const fusoContainer = document.querySelector(".fusoContainer");
+
+btnEliel.addEventListener("click", () => {
+  utcContainer.style.display = "flex";
+  fusoContainer.style.display = "none";
+});
+
+btnJuliane.addEventListener("click", () => {
+  utcContainer.style.display = "none";
+  fusoContainer.style.display = "flex";
+});
