@@ -352,8 +352,8 @@ var aryIanaTimeZones = [
 
 const btnEliel = document.getElementById("btnEliel");
 const btnJuliane = document.getElementById("btnJuliane");
-const utcContainer = document.queryselector("utcContainer");
-const fusoContainer = document.getElementById("fusoContainer");
+const utcContainer = document.queryselector(".utcContainer");
+const fusoContainer = document.queryselector(".fusoContainer");
 
 btnEliel.addEventListener("click", () => {
   utcContainer.style.display = "flex";
