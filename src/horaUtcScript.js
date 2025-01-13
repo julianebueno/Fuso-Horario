@@ -1,35 +1,47 @@
-let date = new Date();
-
-const utcBotoes = document.getElementById("utcBotoes");
-for (let i = 1; i <= 12; i++) {
-  utcBotoes.innerHTML += `<button id="btn+${i}" class="utcBtns"> UTC+${i}</button>`;
-  utcBotoes.innerHTML += `<button id="btn-${i}" class="utcBtns"> UTC-${i}</button>`;
+function atualizarHoras() {
+  date = new Date().toLocaleString("pt-br", { timeZone: `Etc/GMT${timeZoneUtc}`, });
+  relogio.innerHTML = `
+    <div class="containerRelogio">
+      <div class="horas">
+        <p class="texto">${date.slice(12,14)}</p>      
+        <span class="texto">HORAS</span>
+      </div>
+      <div class="minutos">
+        <p class="texto">${date.slice(15,17)}</p>
+        <span class="texto">MINUTOS</span>
+      </div>
+      <div class="segundos">
+        <p class="texto">${date.slice(18,20)}</p>
+        <span class="texto">SEGUNDOS</span>
+      </div>
+    </div>
+    <p class="texto pDataTimezone">${date.slice(0,10)}</p>
+    <p class="texto pDataTimezone">${utcSelecionada}</p>
+  `;
 }
 
-let timeZoneUtc = `-0`;
-let utcBtns = document.querySelectorAll(".utcBtns");
+const relogio = document.getElementById("relogio");
+const utcOpcoes = document.getElementById("utcOpcoes");
 
-utcBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    let num = btn.id.slice(3);
-    timeZoneUtc = `${num.startsWith("+") ? "-" : "+"}${num.slice(1)}`;
-  });
+for (let i = -12; i < 0; i++) {
+  utcOpcoes.innerHTML += `<option value="${i}">${i}</option>`;
+}
+utcOpcoes.innerHTML += `<option value="+0" selected>0</option>`;
+for (let i = 1; i <= 12; i++) {
+  utcOpcoes.innerHTML += `<option value="+${i}">+${i}</option>`;
+}
+
+let date = new Date();
+let utcSelecionada = utcOpcoes.value;
+let timeZoneUtc = `${utcSelecionada.startsWith("+") ? "-" : "+"}${utcSelecionada.slice(1)}`;
+
+utcOpcoes.addEventListener("change", () => {
+  utcSelecionada = utcOpcoes.value;
+  timeZoneUtc = `${utcSelecionada.startsWith("+") ? "-" : "+"}${utcSelecionada.slice(1)}`;
 });
 
-const utcHorariosGMT = document.getElementById("utcHorariosGMT");
-const utcHorariosLocal = document.getElementById("utcHorariosLocal");
-const utcHorariosUTC = document.getElementById("utcHorariosUTC");
-const utcHorariosLocalUTC = document.getElementById("utcHorariosLocalUTC");
+atualizarHoras();
 
 setInterval(() => {
-  date = new Date();
-  utcHorariosGMT.innerHTML = ` <p>${date.toUTCString().slice(4, 25)}</p> `;
-  utcHorariosLocal.innerHTML = ` <p>${date.toLocaleString("pt-br")}</p> `;
-  utcHorariosUTC.innerHTML = ` 
-    <p> Horário UTC ${ timeZoneUtc.startsWith("+")?"-":"+" }${ timeZoneUtc.slice(1) }:</p> 
-  `;
-  utcHorariosLocalUTC.innerHTML = ` 
-    <p>${date.toLocaleString("pt-br", { timeZone: `Etc/GMT${timeZoneUtc}`, })}</p> 
-  `;
-}, 500);
-
+  atualizarHoras();
+}, 1000);

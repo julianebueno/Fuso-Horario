@@ -12,18 +12,14 @@
 </head>
 <body>
   <header id="headerNotIndex"></header>
-  <h1>Hora por UTC</h1>
   <main>
+    <h1 class="texto tituloPrincipal">Hora por UTC</h1>
     <div class="utcContainer">
-      <div id="utcHorarios">
-        <p class="utcHorariosSubTitulos"> Horário GMT:</p>
-        <p id="utcHorariosGMT"></p>
-        <p class="utcHorariosSubTitulos"> Horário Local:</p>
-        <p id="utcHorariosLocal"></p>
-        <p class="utcHorariosSubTitulos" id="utcHorariosUTC"></p>
-        <p id="utcHorariosLocalUTC"></p>
-      </div>
-      <div id="utcBotoes"></div>
+      <form>
+        <label for="utcOpcoes" class="texto">Selecione o UTC:</label>
+        <select name="utcOpcoes" id="utcOpcoes"></select>
+      </form>
+      <div id="relogio"></div>
     </div>
   </main>
   <script src="../src/headerNotIndex.js"></script>
