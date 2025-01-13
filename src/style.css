@@ -26,9 +26,35 @@ header {
   text-align: center;
 }
 
+header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
 header h1 {
-  padding: 10px;
+  display: flex;
+  align-items: start;
+  height: 100%;
   margin-left: 10px;
+}
+
+header h1 a {
+  padding: 10px;
+  border: solid 1px #3aa8;
+  border-top-width: 0;
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+}
+
+header h1 a:hover {
+  background-color: #3aa8;
+  border: solid 1px #333;
+  border-top-width: 0;
 }
 
 header nav {
@@ -40,15 +66,10 @@ header nav {
 }
 
 header nav a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
   background-color: #3aa;
-  color: white;
   height: 75%;
   padding: 15px;
-  width: 100px;
+  width: 80px;
   border-start-end-radius: 10px;
   border-start-start-radius: 10px;
 }
