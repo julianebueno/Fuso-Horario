@@ -1,0 +1,10 @@
+.fusoContainer {
+  display: "flex";
+  flex-direction: column;
+  width: 100%;
+  /* background-color: #fffbf7; */
+}
+
+#relogio {
+  border: solid 1px fuchsia;
+}

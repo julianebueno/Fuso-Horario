@@ -1,0 +1,35 @@
+.utcContainer {
+  display: "flex";
+  flex-direction: column;
+  background-color: #f4f4f4;
+  width: 100%;
+  padding: 10px;
+  /* border: solid 1px yellowgreen; */
+}
+
+#utcHorarios p:nth-child(even) {
+  margin-bottom: 15px;
+  border-bottom: solid 1px #999;
+}
+
+.utcHorariosSubTitulos {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.utcBtns {
+  padding: 10px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  min-width: 5rem;
+  width: 7.5%;
+}
+
+#utcBotoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
