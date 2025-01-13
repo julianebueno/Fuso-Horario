@@ -350,13 +350,32 @@ var aryIanaTimeZones = [
   "Africa/Johannesburg",
 ];
 
-let date = new Date();
+function atualizarHoras () {
+  let date = new Date().toLocaleString("pt-br", { timeZone: `${timeZone}` });
+  relogio.innerHTML = `
+    <div class="containerRelogio">
+      <div class="horas">
+        <p class="texto">${date.slice(12,14)}</p>      
+        <span class="texto">HORAS</span>
+      </div>
+      <div class="minutos">
+        <p class="texto">${date.slice(15,17)}</p>
+        <span class="texto">MINUTOS</span>
+      </div>
+      <div class="segundos">
+        <p class="texto">${date.slice(18,20)}</p>
+        <span class="texto">SEGUNDOS</span>
+      </div>
+    </div>
+    <p class="texto pDataTimezone">${date.slice(0,10)}</p>
+    <p class="texto pDataTimezone">${timeZone}</p>
+  `;
+}
 
 const fuso = document.getElementById("fuso");
 const relogio = document.getElementById("relogio");
 
 let timeZone = aryIanaTimeZones[0];
-let strTime = date.toLocaleString("pt-br", { timeZone: `${timeZone}` });
 
 aryIanaTimeZones.forEach((timeZone) => {
   fuso.innerHTML += `<option value="${timeZone}">${timeZone}</option>`;
@@ -366,11 +385,8 @@ fuso.addEventListener("change", () => {
   timeZone = fuso.value;
 });
 
+atualizarHoras();
+
 setInterval(() => {
-  date = new Date();
-  strTime = date.toLocaleString("pt-br", { timeZone: `${timeZone}` });
-  relogio.innerHTML = `
-    <p>Horário Local: ${date.toLocaleString()}</p>
-    <p>Horário no Fuso: ${strTime}</p>
-  `;
-}, 500);
+  atualizarHoras();
+}, 1000);
